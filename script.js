@@ -2,18 +2,15 @@ function mincost(arr)
 { 
 //write your code here
 // return the min cost
-  arr.sort((a,b)=>{
-	  return a-b
-  })
-	let min =0
-	let len =0
-	for(let i of arr){
-		if(min==0 && len==0) len+=i
-		else{
-			len+=i
-			min+=len
-		}
-		
+	let min = 0
+	while(arr.length>1){
+		arr.sort((a,b)=>{
+			return b-a
+		})
+		let first = arr.pop()
+		let sec = arr.pop()
+		min+=first+sec
+		arr.push(first+sec)
 	}
 	return min
 }
